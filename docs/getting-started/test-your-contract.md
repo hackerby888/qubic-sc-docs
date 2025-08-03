@@ -6,15 +6,15 @@ sidebar_position: 3
 
 Now that we’ve created our contract, it's time to test it and make sure it works as expected.
 
-## Create test file
+## 📂 Create test program
 
-> Test file should be named as `contract_[your_contract_name_lowercase].cpp`.
+> Test program should be named as `contract_[your_contract_name_lowercase].cpp`.
 
-> Example: For a contract named `MyTest`, the test file should be `contract_mytest.cpp`.
+> Example: For a contract named `MyTest`, the test program should be `contract_mytest.cpp`.
 
-Navigate to the `test` project and create a new file called `contract_mytest.cpp` with the following template:
+Navigate to the `test` project and create a new program called `contract_mytest.cpp` with the following template:
 
-```cpp
+```cpp title="contract_mytest.cpp"
 #define NO_UEFI
 
 #include "contract_testing.h"
@@ -88,7 +88,7 @@ As you can see, your test is not executed first. Waiting for other tests can was
 - Right-click the unloaded project → Edit Project File
 - Find the section like this:
 
-```xml
+```xml title="test.vcxproj"
 ...
   <ItemGroup>
     <ClCompile Include="assets.cpp" />
@@ -131,7 +131,7 @@ As you can see, your test is not executed first. Waiting for other tests can was
 
 Move the contract_mytest.cpp entry above all other files, like so:
 
-```xml
+```xml title="test.vcxproj"
 ...
   <ItemGroup>
     <ClCompile Include="contract_mytest.cpp" />
@@ -187,3 +187,7 @@ Now, rebuild and run the test again. You should see your test run first:
 [----------] 1 test from MyTest (36780 ms total)
 ...
 ```
+
+:::info
+Since compiling tests for other contracts can be heavy—and we only want to test our own contract—you can remove lines starting with `contract_xxx.cpp` (e.g., `contract_qearn.cpp`, `contract_msvault.cpp`) in `test.vcxproj`.
+:::
