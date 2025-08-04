@@ -36,11 +36,22 @@ struct MYTEST : public ContractBase {
 
 ```
 
+## Contract Error
+
+Declare contract-specific errors as an `enum`
+
+```cpp
+enum ContractNameError {
+	ERROR_1 = 1,
+	ERROR_2,
+};
+```
+
 ## SELF And SELF_INDEX
 
-- `SELF` is your contract id (public key). Or you can generate it manually by `id(CONTRACT_INDEX, 0, 0 , 0)`.
+-   `SELF` is your contract id (public key). Or you can generate it manually by `id(CONTRACT_INDEX, 0, 0 , 0)`.
 
-- `SELF_INDEX` is your contract index.
+-   `SELF_INDEX` is your contract index.
 
 ## Smart Contract Initialization
 
