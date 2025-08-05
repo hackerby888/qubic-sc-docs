@@ -20,6 +20,10 @@ Qubic has a public testnet, but deploying your contract requires assistance from
 A good place to rent the server with low cost is **hostkey.com**. Make sure to choose a **dedicated machine (Baremetal)** (eg., **bm.v1-big**), not a VPS. To minimize potential issues, please use **Ubuntu 22.04**.
 :::
 
+:::warning
+If your node logs appear choppy or laggy in RDP, it's likely that your CPU is too slow and not suitable for running a Qubic Core node.
+:::
+
 ## Prepare Qubic.efi
 
 ### Intergrate SC
@@ -236,7 +240,7 @@ To be able to make transactions, invoking contract procedures, your node must ti
 
 ### Enable MAIN/MAIN mode
 
-- Press **F12** three times while the node is running to switch to `MAIN/MAIN` mode.
+-   Press **F12** three times while the node is running to switch to `MAIN/MAIN` mode.
 
 ![png](/img/qrdp_2.png)
 
@@ -251,9 +255,9 @@ chmod +x ./broadcastComputorTestnet
 ./broadcastComputorTestnet <ip> <epoch> <port>
 ```
 
-- ip: The IP address of the node where you want to send the indices.
-- epoch: The epoch number (e.g., 170).
-- port: The port used by the node (e.g., 31843).
+-   ip: The IP address of the node where you want to send the indices.
+-   epoch: The epoch number (e.g., 170).
+-   port: The port used by the node (e.g., 31843).
 
 Example output:
 
