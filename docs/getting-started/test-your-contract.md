@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Now that we’ve created our contract, it's time to test it and make sure it works as expected.
 
-## 📂 Create test program
+## Create test program
 
 > Test program should be named as `contract_[your_contract_name_lowercase].cpp`.
 
@@ -45,7 +45,7 @@ TEST(MyTest, TestAdd) {
 }
 ```
 
-## 🛠️ Build the test
+## Build the test
 
 Right-click the test project in Visual Studio and select Build. If successful, you’ll see output like this:
 
@@ -77,16 +77,16 @@ Running main() from D:\a\_work\1\s\ThirdParty\googletest\googletest\src\gtest_ma
 
 As you can see, your test is not executed first. Waiting for other tests can waste time — but there's a quick trick to prioritize yours.
 
-## 🚀 How To Run Your Test First
+## How To Run Your Test First
 
 **1. Unload the Project**
 
-- Right click the `test` project then choose `Unload project`
+-   Right click the `test` project then choose `Unload project`
 
 **2. Edit the Project File**
 
-- Right-click the unloaded project → Edit Project File
-- Find the section like this:
+-   Right-click the unloaded project → Edit Project File
+-   Find the section like this:
 
 ```xml title="test.vcxproj"
 ...
@@ -172,8 +172,8 @@ Move the contract_mytest.cpp entry above all other files, like so:
 
 **4. Save and Reload**
 
-- Save the .vcxproj file.
-- Right-click the project → Reload Project
+-   Save the .vcxproj file.
+-   Right-click the project → Reload Project
 
 Now, rebuild and run the test again. You should see your test run first:
 

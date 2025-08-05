@@ -11,14 +11,14 @@ Each smart contract can be launched through an IPO (Initial Public Offering), a 
 
 # Key Features
 
-**🧠 1. Baremetal Execution**
+**1. Baremetal Execution**
 
 Smart contracts run directly on the hardware—without an OS, VM, or container layer—allowing extremely low-level control, high-speed execution, and minimal overhead.
 
-**💰 2. IPO-Based Deployment (Initial Public Offering)**
+**2. IPO-Based Deployment (Initial Public Offering)**
 
 Each contract must be proposed through an IPO process where the community allocates compute resources (votes) for execution. This crowdsourced validation ensures only useful or trusted logic consumes network power.
 
-**🛠 3. No Virtual Machine, No Gas Model**
+**3. No Virtual Machine, No Gas Model**
 
 There is no EVM-like gas mechanism. Instead, compute resources are provisioned via IPO and scheduled execution, avoiding the need for micro-fees or instruction-based billing.
