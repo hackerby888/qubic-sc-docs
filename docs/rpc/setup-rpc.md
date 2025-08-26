@@ -4,12 +4,26 @@ Manually setting up the RPC server can be a challenging task, but fortunately, w
 
 ## Install Docker
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="linux" label="Linux" default>
 ```bash
 apt update
 apt install -y docker.io
 curl -L "https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 ```
+  </TabItem>
+  <TabItem value="window" label="Windows">
+```
+1. Download and install the docker desktop at https://www.docker.com/products/docker-desktop.
+2. Launch Docker Desktop from Start Menu.
+3. Wait until it shows Docker is running.
+```
+  </TabItem>
+</Tabs>
 
 ## Docker Compose File
 
@@ -44,15 +58,14 @@ Let's test if our RPC is running by make a GET request to `http://IP:8000/v1/tic
 
 ```json
 {
-    "tickInfo": {
-        "tick": 18480136,
-        "duration": 0,
-        "epoch": 170,
-        "initialTick": 18480000
-    }
+  "tickInfo": {
+    "tick": 18480136,
+    "duration": 0,
+    "epoch": 170,
+    "initialTick": 18480000
+  }
 }
 ```
-
 
 ## References
 

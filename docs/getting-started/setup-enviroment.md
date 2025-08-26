@@ -4,7 +4,11 @@ sidebar_position: 1
 
 # Setup Environment
 
-To set up the environment for developing QUBIC smart contracts, you only need two things: `Visual Studio` and the [`QUBIC Core`](https://github.com/qubic/core) repository. Simple, right?
+To set up the environment for developing QUBIC smart contracts, you only need two things: `Visual Studio` and the [`Qubic Core`](https://github.com/qubic/core) repository. Simple, right?
+
+:::info
+We recommend to use [Qubic Core Lite](/resources/qubic-lite-core) repo instead of official Qubic Core so we can build and run the local testnet with our smart contract **directly in OS** without using VM to run the testnet.
+:::
 
 ## 1. Install Visual Studio
 
@@ -60,5 +64,5 @@ If you see logs like the one below — congrats! You've successfully set up your
 ![VS](/img/install_vs9.png)
 
 :::warning
-If you see the logs is The Windows SDK version 10.0.22621.0 was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking the solution and selecting "Retarget solution".
+If you see the logs is The Windows SDK version xx.xx.xxxx.x was not found. Install the required version of Windows SDK or change the SDK version in the project property pages or by right-clicking the solution and selecting "Retarget solution".
 :::

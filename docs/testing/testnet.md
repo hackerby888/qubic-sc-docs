@@ -1,5 +1,9 @@
 # Testnet
 
+:::info
+We recommend to use [Qubic Lite Core](/resources/qubic-lite-core) to create a local testnet instead of using VM to run .efi (tutorial below). It's much more easy to start!
+:::
+
 Now let's learn how to deploy your custom smart contract to the Qubic Testnet. Unfortunately, deploying your contract requires setting up and running your own Qubic node on virtual machine, which can be a complex and challenging task.
 
 But don't worry — we're here to help you through it, step by step.
@@ -240,7 +244,7 @@ To be able to make transactions, invoking contract procedures, your node must ti
 
 ### Enable MAIN/MAIN mode
 
--   Press **F12** three times while the node is running to switch to `MAIN/MAIN` mode.
+- Press **F12** three times while the node is running to switch to `MAIN/MAIN` mode.
 
 ![png](/img/qrdp_2.png)
 
@@ -255,9 +259,9 @@ chmod +x ./broadcastComputorTestnet
 ./broadcastComputorTestnet <ip> <epoch> <port>
 ```
 
--   ip: The IP address of the node where you want to send the indices.
--   epoch: The epoch number (e.g., 170).
--   port: The port used by the node (e.g., 31843).
+- ip: The IP address of the node where you want to send the indices.
+- epoch: The epoch number (e.g., 170).
+- port: The port used by the node (e.g., 31843).
 
 Example output:
 
