@@ -55,7 +55,8 @@ id invocator() const
 PUBLIC_PROCEDURE(updateBalance)
 {
     // Only allow user with public key id(1,2,3,4) to call this
-    if (qpi.invocator() != id(1,2,3,4)) {
+    if (qpi.invocator() != id(1,2,3,4))
+    {
       return;
     }
     // ... proceed with logic ...
@@ -86,7 +87,8 @@ PUBLIC_PROCEDURE(updateBalance)
 {
     // Only allow direct calls from users (no intermediate contracts)
     // Rejects any calls coming through other contracts in the call chain
-    if (qpi.invocator() != qpi.originator()) {
+    if (qpi.invocator() != qpi.originator())
+    {
       return;
     }
     // ... proceed with logic ...
@@ -107,8 +109,10 @@ sint64 invocationReward() const
 
 ```cpp
 constexpr sint64 FEE = 1000; // 1000 QU required
-PUBLIC_PROCEDURE(premiumFeature) {
-    if (qpi.invocationReward() < FEE) {
+PUBLIC_PROCEDURE(premiumFeature)
+{
+    if (qpi.invocationReward() < FEE)
+    {
         // user will lost 1000 QUs, because we don't give back
         return;
     }
@@ -132,9 +136,11 @@ inline sint64 transfer( // Attempts to transfer energy from this qubic
 **1. Basic Transfer**
 
 ```cpp
-PUBLIC_PROCEDURE_WITH_LOCALS(sendPayment) {
+PUBLIC_PROCEDURE_WITH_LOCALS(sendPayment)
+{
     locals.result = qpi.transfer(input.recipientId, 1000);
-    if (locals.result < 0) {
+    if (locals.result < 0)
+    {
         return;
     }
     // Success: 'result' contains new balance
@@ -144,7 +150,8 @@ PUBLIC_PROCEDURE_WITH_LOCALS(sendPayment) {
 **2. Burn QU (Destroy Tokens)**
 
 ```cpp
-PUBLIC_PROCEDURE_WITH_LOCALS(burnTokens) {
+PUBLIC_PROCEDURE_WITH_LOCALS(burnTokens)
+{
     locals.burned = qpi.transfer(NULL_ID, input.amount);
     // burned = remaining balance
 }
@@ -163,9 +170,11 @@ sint64 burn(sint64 amount) const
 **1. Basic Token Burning**
 
 ```cpp
-PUBLIC_PROCEDURE_WITH_LOCALS(burnTokens) {
+PUBLIC_PROCEDURE_WITH_LOCALS(burnTokens)
+{
     locals.remaining = qpi.burn(1000); // Burn 1000 QU
-    if (locals.remaining < 0) {
+    if (locals.remaining < 0)
+    {
        return;
     }
     // Success: 'remaining' shows new balance
@@ -175,8 +184,10 @@ PUBLIC_PROCEDURE_WITH_LOCALS(burnTokens) {
 **2. Conditional Burn**
 
 ```cpp
-PUBLIC_PROCEDURE_WITH_LOCALS(burnExcess) {
-    if (state.balance > state.targetBalance) {
+PUBLIC_PROCEDURE_WITH_LOCALS(burnExcess)
+{
+    if (state.balance > state.targetBalance)
+    {
         locals.excess = state.balance - state.targetBalance;
         qpi.burn(locals.excess); // Burn surplus QU
     }
@@ -197,15 +208,18 @@ id K12(const T& data) const
 **1. Hashing Raw Data**
 
 ```cpp
-struct HashExample_input {
+struct HashExample_input
+{
   Array<uint8, 2> rawData;
 };
 
-struct HashExample_output {
+struct HashExample_output
+{
   id hashResult;
 };
 
-PUBLIC_FUNCTION(HashExample) {
+PUBLIC_FUNCTION(HashExample)
+{
   // Compute K12 hash
   output.hashResult = qpi.K12(input.rawData);
 }
@@ -214,24 +228,29 @@ PUBLIC_FUNCTION(HashExample) {
 **2. Creating Unique IDs**
 
 ```cpp
-struct User {
+struct User
+{
   id publicKey;
   uint32 registrationDate;
 };
 
-struct createUserId_input {
+struct createUserId_input
+{
   id pub;
 };
 
-struct createUserId_output {
+struct createUserId_output
+{
   id hash;
 };
 
-struct createUserId_locals {
+struct createUserId_locals
+{
   User user;
 };
 
-PUBLIC_FUNCTION_WITH_LOCALS(createUserId) {
+PUBLIC_FUNCTION_WITH_LOCALS(createUserId)
+{
   locals.user = { input.pub, qpi.tick() };
   output.hash = qpi.K12(locals.user); // Deterministic ID
 }
@@ -438,20 +457,26 @@ bool getEntity(
 **_1. Basic Entity Lookup_**
 
 ```cpp
-struct getUserEntity_input {
+struct getUserEntity_input
+{
   id userId;
 };
 
-struct getUserEntity_output {
+struct getUserEntity_output
+{
   QPI::Entity userEntity;
   sint64 netFlow;
 };
 
-PUBLIC_FUNCTION(getUserEntity) {
-  if (qpi.getEntity(input.userId, output.userEntity)) {
+PUBLIC_FUNCTION(getUserEntity)
+{
+  if (qpi.getEntity(input.userId, output.userEntity))
+  {
     // Use entity data
     output.netFlow = output.userEntity.incomingAmount - output.userEntity.outgoingAmount;
-  } else {
+  }
+  else
+  {
     // Entity not found
   }
 }
@@ -470,11 +495,13 @@ In the test environment, these functions will not work correctly—they will alw
 :::
 
 ```cpp
-struct GetDateTime_input {
+struct getDateTime_input
+{
   // Can be empty or contain parameters
 };
 
-struct GetDateTime_output {
+struct getDateTime_output
+{
   uint8  year;
   uint8  month;
   uint8  day;
@@ -486,7 +513,8 @@ struct GetDateTime_output {
   uint16 epoch;
 };
 
-PUBLIC_FUNCTION(GetDateTime) {
+PUBLIC_FUNCTION(getDateTime)
+{
   // Get current date/time
   output.year = qpi.year();         // 0-99 (2000-2099)
   output.month = qpi.month();       // 1-12
@@ -503,17 +531,20 @@ PUBLIC_FUNCTION(GetDateTime) {
   output.epoch = qpi.epoch();       // Current epoch
 }
 
-struct DayOfWeek_input {
+struct dayOfWeek_input
+{
   uint8 year;
   uint8 month;
   uint8 day;
 };
 
-struct DayOfWeek_output {
+struct dayOfWeek_output
+{
   uint8 dayOfWeek; // 0=Wednesday, 1=Thursday,...6=Tuesday
 };
 
-PUBLIC_FUNCTION(DayOfWeek) {
+PUBLIC_FUNCTION(dayOfWeek)
+{
   output.dayOfWeek = qpi.dayOfWeek(
     input.year,
     input.month,
